@@ -12,7 +12,11 @@ export const layers = [
     id: 'fixed_route',
     mapboxLayers: [
       'kiryas-joel-routes-2orsdt',
-      'kiryas-joel-stops-2uc4i2'
+      'kiryas-joel-stops-2uc4i2',
+      'middletown-stops-diobrx',
+      'middletown-routes-b1slb4',
+      'newburgh-stops-3vbziu',
+      'newburgh-routes-1k2y17'
     ],
     name: 'Fixed Route',
     selected: true
