@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/transit-orange-prototype/static/css/main.84b5b4c0.chunk.css",
+    "main.js": "/transit-orange-prototype/static/js/main.9c0e1469.chunk.js",
+    "main.js.map": "/transit-orange-prototype/static/js/main.9c0e1469.chunk.js.map",
+    "runtime~main.js": "/transit-orange-prototype/static/js/runtime~main.c4dd0171.js",
+    "runtime~main.js.map": "/transit-orange-prototype/static/js/runtime~main.c4dd0171.js.map",
+    "static/css/2.6639d161.chunk.css": "/transit-orange-prototype/static/css/2.6639d161.chunk.css",
+    "static/js/2.bbf2b4e1.chunk.js": "/transit-orange-prototype/static/js/2.bbf2b4e1.chunk.js",
+    "static/js/2.bbf2b4e1.chunk.js.map": "/transit-orange-prototype/static/js/2.bbf2b4e1.chunk.js.map",
+    "index.html": "/transit-orange-prototype/index.html",
+    "precache-manifest.5ae48286b12dcd681ac441e752506525.js": "/transit-orange-prototype/precache-manifest.5ae48286b12dcd681ac441e752506525.js",
+    "service-worker.js": "/transit-orange-prototype/service-worker.js",
+    "static/css/2.6639d161.chunk.css.map": "/transit-orange-prototype/static/css/2.6639d161.chunk.css.map",
+    "static/css/main.84b5b4c0.chunk.css.map": "/transit-orange-prototype/static/css/main.84b5b4c0.chunk.css.map"
+  }
+}
