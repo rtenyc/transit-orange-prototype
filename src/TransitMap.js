@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactMapboxGl, { ZoomControl } from "react-mapbox-gl";
 import { useSelector } from 'react-redux';
 
-import { mapboxAccessToken, mapboxStyleUrl, towns } from './config';
+import { mapboxAccessToken, mapboxStyles, towns } from './config';
 import LayerSelector from './LayerSelector';
 import TownSelector from './TownSelector';
 
@@ -12,6 +12,7 @@ const Map = ReactMapboxGl({
 
 export default function TransitMap(props) {
   const [center, setCenter] = useState([-74.3389, 41.386]);
+  const [currentZoom, setCurrentZoom] = useState(10);
   const [map, setMap] = useState(null);
   const [zoom, setZoom] = useState([10]);
   const layers = useSelector(state => state.layers);
@@ -19,7 +20,9 @@ export default function TransitMap(props) {
   function updateLayerVisibility(map, layers) {
     layers.forEach(({ mapboxLayers, selected }) => {
       mapboxLayers.forEach(mapboxId => {
-        map.setLayoutProperty(mapboxId, 'visibility', selected ? 'visible' : 'none');
+        if (map.getLayer(mapboxId)) {
+          map.setLayoutProperty(mapboxId, 'visibility', selected ? 'visible' : 'none');
+        }
       });
     });
   }
@@ -31,13 +34,14 @@ export default function TransitMap(props) {
   return (
     <Map
       // eslint-disable-next-line
-      style={mapboxStyleUrl}
+      style={currentZoom <= 11 ? mapboxStyles.schematic : mapboxStyles.geographic}
       center={center}
       containerStyle={{
         height: "100vh",
         width: "100vw"
       }}
       onStyleLoad={setMap}
+      onZoomEnd={map => setCurrentZoom(map.getZoom())}
       zoom={zoom}
     >
 
