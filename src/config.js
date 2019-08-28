@@ -19,7 +19,12 @@ export const layers = [
       'middletown-stops-diobrx',
       'middletown-routes-b1slb4',
       'newburgh-stops-3vbziu',
-      'newburgh-routes-1k2y17'
+      'newburgh-routes-1k2y17',
+      'middletown-diagram-7rjl9c',
+      'monroe-kiryasjoel-diagram-2k14zi',
+      'newburgh-diagram-286qeo',
+      'warwick-diagram-1p1ien',
+      'warwick-routes-5ujpds'
     ],
     name: 'Fixed Route',
     selected: true
