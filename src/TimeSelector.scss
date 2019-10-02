@@ -1,0 +1,20 @@
+.TimeSelector {
+  bottom: 30px;
+  position: absolute;
+  right: 150px;
+  background: white;
+  padding: 1em;
+  width: 400px;
+  z-index: 1000;
+
+  &-inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .day-of-week {
+    width: 150px;
+  }
+}

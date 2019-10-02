@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { mapboxAccessToken, mapboxStyles, towns } from './config';
 import LayerSelector from './LayerSelector';
-import StyleSelector from './StyleSelector';
+import TimeSelector from './TimeSelector';
 import TownSelector from './TownSelector';
 
 const Map = ReactMapboxGl({
@@ -14,9 +14,24 @@ const Map = ReactMapboxGl({
 export default function TransitMap(props) {
   const [center, setCenter] = useState([-74.3389, 41.386]);
   const [map, setMap] = useState(null);
-  const [style, setStyle] = useState('schematic');
   const [zoom, setZoom] = useState([10]);
   const layers = useSelector(state => state.layers);
+  const { dayOfWeek, timeOfDay } = useSelector(state => state.time);
+
+  function filterByTime(map, layers, dayOfWeek, timeOfDay) {
+    layers.forEach(({ mapboxLayers }) => {
+      mapboxLayers.forEach(mapboxId => {
+        if (map.getLayer(mapboxId)) {
+          const prefix = dayOfWeek.replace('day', '').toLowerCase();
+          const filter = ['all',
+            ['<=', `${prefix}_min`, timeOfDay],
+            ['>=', `${prefix}_max`, timeOfDay]
+          ];
+          map.setFilter(mapboxId, filter);
+        }
+      });
+    });
+  }
 
   function updateLayerVisibility(map, layers) {
     layers.forEach(({ mapboxLayers, selected }) => {
@@ -32,10 +47,14 @@ export default function TransitMap(props) {
     updateLayerVisibility(map, layers);
   }
 
+  if (map && layers && dayOfWeek && timeOfDay) {
+    filterByTime(map, layers, dayOfWeek, timeOfDay);
+  }
+
   return (
     <Map
       // eslint-disable-next-line
-      style={mapboxStyles[style]}
+      style={mapboxStyles.geographic}
       center={center}
       containerStyle={{
         height: "100vh",
@@ -47,12 +66,6 @@ export default function TransitMap(props) {
 
       <ZoomControl />
 
-      <StyleSelector
-        onChange={value => setStyle(value)}
-        selectedStyle={style}
-        styles={Object.keys(mapboxStyles)}
-      />
-
       <TownSelector
         onChange={value => {
           const { center, zoom } = towns.filter(town => town.name === value)[0];
@@ -63,6 +76,7 @@ export default function TransitMap(props) {
       />
 
       <LayerSelector />
+      <TimeSelector />
 
     </Map>
   );
