@@ -1,8 +1,12 @@
+import moment from 'moment';
+
 import * as actions from '../actions';
 
+const now = moment();
+
 const DEFAULT_STATE = {
-  dayOfWeek: 'Monday',
-  timeOfDay: '1200'
+  dayOfWeek: now.format('dddd'),
+  timeOfDay: now.format('hhmm')
 };
 
 export default (state = DEFAULT_STATE, action) => {
