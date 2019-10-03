@@ -1,15 +1,14 @@
 export const mapboxAccessToken = 'pk.eyJ1IjoiZXJpY3J0ZSIsImEiOiJjanh5cmhvMTQwMnRuM21xczVrczlxMjN2In0.-b1kRpcWg52iFTcPFferTw';
 export const mapboxStyles = {
-  geographic: 'mapbox://styles/ericrte/cjxyri6ya0x1s1cocb4py33do/draft',
-  schematic: 'mapbox://styles/ericrte/cjzoiwq1p2p6y1co14y4rd1kl/draft'
+  geographic: 'mapbox://styles/ericrte/ck1aunacn4u1o1cnmb6wm3lrj/draft',
 }
 
 export const layers = [
   {
     id: 'dial_a_ride',
     mapboxLayers: [
-      'dial_a_ride',
-      'dial-a-ride-diagram'
+      'dial-a-bus-geographic',
+      'dial-a-bus-diagram'
     ],
     name: 'Dial-a-Ride',
     selected: true
